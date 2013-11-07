@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Testing with AngularJS</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css">
+    <link rel="stylesheet" href="css/overrides.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body id="body">
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+          <h2><span class="em4">Real-time</span> eye candy with <span class="em2">AngularJS</span></h2>
+          <p>
+            By Matias Niemela
+          </p>
+        </section>
+
+				<section>
+					<h2 class="em">@yearofmoo</h2>
+          <div id="logo"></div>
+          <p class="fragment fade-in">
+            <a class="em2" target="_blank" href="http://www.yearofmoo.com">http://www.yearofmoo.com</a>
+          </p>
+					<p class="fragment fade-in">
+            Eight major AngularJS articles.
+					</p>
+
+					<p class="fragment fade-in">
+            Great resource to learn about <span class="em3">AngularJS</span>.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="em">Link to Slides, Article and Video</h2>
+          <p class="fragment fade-in">
+            <a target="_blank" href="http://yom.nu/ngtesting-slides" rel="nofollow">Slides: yom.nu/ngtesting-slides</a>
+          </p>
+          <p class="fragment fade-in">
+            <a target="_blank" href="http://yom.nu/ngtesting-article" rel="nofollow">Article: yom.nu/ngtesting-article</a>
+          </p>
+          <p class="fragment fade-in">
+            <a target="_blank" href="http://yom.nu/ngtesting-video" rel="nofollow">Video: yom.nu/ngtesting-video</a>
+          </p>
+				</section>
+
+        <section>
+          <h2 class="em">I am here to ...</h2>
+          <p class="fragment fade-in">
+            Explain a constructive approach to realtime website applications
+          </p>
+          <p class="fragment fade-in">
+            Show how difficult this can be to do without the right tools
+          </p>
+          <p class="fragment fade-in">
+            Show how amazing AngularJS is for doing this
+          </p>
+          <p class="fragment fade-in">
+            Show how to master the UI of your real-time application
+          </p>
+          <p class="fragment fade-in">
+            Show some more tools which can help you test and maintain your code
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Websites, Webapps, Real-time Apps?</h2>
+          <p class="fragment fade-in">
+            You have traditional websites (AJAX isn't dominant here)
+          </p>
+          <p class="fragment fade-in">
+            You have AJAX web applications (SPA applications)
+          </p>
+          <p class="fragment fade-in">
+            You have fully real time applications (WebSockets)
+          </p>
+          <p class="fragment fade-in">
+            You have hybrid web applications (AJAX apps that use WebSockets here and there)
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Users will soon expect applications to be real-time</h2>
+          <p class="fragment fade-in">
+            Webapps don’t need to refresh the page anymore
+          </p>
+          <p class="fragment fade-in">
+            Sometimes a route change will update only a certain section
+          </p>
+          <p class="fragment fade-in">
+            Does the page update when the user walks away from the screen?
+          </p>
+          <p class="fragment fade-in">
+            The more AJAX-oriented it is then the more real-time it will need to be
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">The best of both worlds (hybrid web applications)</h2>
+          <p class="fragment fade-in">
+            Use AJAX from the start (standard SPA application)
+          </p>
+          <p class="fragment fade-in">
+            Then apply real-time effects as you go?
+          </p>
+          <p class="fragment fade-in">
+            What is the first problem that comes to mind?
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">AJAX websites back in the day</h2>
+          <p class="fragment fade-in">
+            Hook into the hashbang/pushState URL change
+          </p>
+          <p class="fragment fade-in">
+            Figure out what page to download
+          </p>
+          <p class="fragment fade-in">
+            Update the body of the page
+          </p>
+          <p class="fragment fade-in">
+            Perform a fancy animation
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Lets try and make something</h2>
+          <p class="fragment fade-in">
+            Lets try and use pusher.js to update a page
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Problems you can run into</h2>
+          <p class="fragment fade-in">
+            Update collisions between AJAX data and Real-time data
+          </p>
+          <p class="fragment fade-in">
+            Dependency issues
+          </p>
+          <p class="fragment fade-in">
+            Disorganized Code
+          </p>
+          <p class="fragment fade-in">
+            Problematic or absence of testing
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">So what are these hybrid applications?</h2>
+          <p class="fragment fade-in">
+            Uses AJAX/HTTP primarily
+          </p>
+          <p class="fragment fade-in">
+            Uses WebSockets (a real-time connection) to enhance the experience
+          </p>
+          <p class="fragment fade-in">
+            Gracefully degrade for older browsers
+          </p>
+          <p class="fragment fade-in">
+            Kind of like a mobile first approach to making real-time applications
+          </p>
+          <p class="fragment fade-in">
+            You don’t need to make the entire website using a real-time backend
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Great examples of hybrid applications</h2>
+          <p class="fragment fade-in">
+            Github (PR pages)
+          </p>
+          <p class="fragment fade-in">
+            Asana (tasks)
+          </p>
+          <p class="fragment fade-in">
+            Our demo application...
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Why AngularJS for a real-time web application?</h2>
+          <p class="fragment fade-in">
+            The scoping system allows for an easy way to update data
+          </p>
+          <p class="fragment fade-in">
+            Directives &amp; Expressions can update the DOM as the data changes
+          </p>
+          <p class="fragment fade-in">
+            Animations can make it look nice
+          </p>
+          <p class="fragment fade-in">
+            AngularJS can work with a non-angular application
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">How does this work?</h2>
+          <p class="fragment fade-in">
+            Bindings, directives and expressions all watch the scope
+          </p>
+          <p class="fragment fade-in">
+            The scope is your in-memory database
+          </p>
+          <p class="fragment fade-in">
+            Place AJAX and/or real-time data into the scope
+          </p>
+          <p class="fragment fade-in">
+            The page updates, renders and animates
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Lets make a real-time chat using AngularJS</h2>
+        </section>
+
+        <section>
+          <h2 class="em">Types of real-time connections</h2>
+          <p class="fragment fade-in">
+            Native WebSockets
+          </p>
+          <p class="fragment fade-in">
+            Socket.io
+          </p>
+          <p class="fragment fade-in">
+            Pusher
+          </p>
+          <p class="fragment fade-in">
+            Firebase
+          </p>
+        </section>
+        
+        <section>
+          <h2 class="em">Demo + Repo</h2>
+          <p class="fragment fade-in">
+            Link to demo:
+          </p>
+          <p class="fragment fade-in">
+            Link to code:
+          </p>
+          <p class="fragment fade-in">
+            Underlying Seed Repo:
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">What code are we using?</h2>
+          <p class="fragment fade-in">
+            Grunt
+          </p>
+          <p class="fragment fade-in">
+            Karma with Jasmine (unit testing)
+          </p>
+          <p class="fragment fade-in">
+            Protractor (end to end testing)
+          </p>
+          <p class="fragment fade-in">
+            AngularJS 1.2 with ngRoute + ngAnimate
+          </p>
+          <p class="fragment fade-in">
+            Pusher.js
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">What about the backend?</h2>
+          <p class="fragment fade-in">
+            A simple Rails app to manage the admin
+          </p>
+          <p class="fragment fade-in">
+            JBuilder for the API
+          </p>
+          <p class="fragment fade-in">
+            RailsAdmin for a pre-made admin
+          </p>
+          <p class="fragment fade-in">
+            Whenever the model changes, upload to pusher
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Step 0: Explore the application</h2>
+          <p class="fragment fade-in">
+            git checkout step-0
+          </p>
+          <p class="fragment fade-in">
+            Index Page
+          </p>
+          <p class="fragment fade-in">
+            User Page
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Step 1: Setup the real-time connection</h2>
+          <p class="fragment fade-in">
+            git checkout step-1
+          </p>
+          <p class="fragment fade-in">
+            Add Pusher.js
+          </p>
+          <p class="fragment fade-in">
+            test for frames
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Step 2: Apply the real-time connection to each page</h2>
+          <p class="fragment fade-in">
+            git checkout step-2
+          </p>
+          <p class="fragment fade-in">
+            create a stream service
+          </p>
+          <p class="fragment fade-in">
+            update the scope on changes
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Step 3: Animate the code</h2>
+          <p class="fragment fade-in">
+            git checkout step-3
+          </p>
+          <p class="fragment fade-in">
+            How do animations with AngularJS work?
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Overview of animations in AngularJS</h2>
+          <p class="fragment fade-in">
+            Use angular-animate.js with 1.2
+          </p>
+          <p class="fragment fade-in">
+            Include the ngAnimate module
+          </p>
+          <p class="fragment fade-in">
+            Supports CSS3 Transitions / Keyframe animations
+          </p>
+          <p class="fragment fade-in">
+            Supports JS callback animations
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Animate the Home Page</h2>
+          <p class="fragment fade-in">
+            List of users (ngRepeat)
+          </p>
+          <p class="fragment fade-in">
+            Featured user (custom directive)
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Animate the Profile Page</h2>
+          <p class="fragment fade-in">
+            Profile Picture or any of the page content
+          </p>
+          <p class="fragment fade-in">
+            List of comments (ngRepeat)
+          </p>
+          <p class="fragment fade-in">
+            Is Featured (ngIf + ngClass)
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Staggering Animations</h2>
+          <p class="fragment fade-in">
+            Brand new feature with 1.2
+          </p>
+          <p class="fragment fade-in">
+            Lets place a stagger on the home page for the users
+          </p>
+          <p class="fragment fade-in">
+            Stagger the comments
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Step 4: Lets unit test this</h2>
+          <p class="fragment fade-in">
+            git checkout step-4
+          </p>
+          <p class="fragment fade-in">
+            Jasmine tests the JavaScript code
+          </p>
+          <p class="fragment fade-in">
+            angular-mocks.js provides mocking support
+          </p>
+          <p class="fragment fade-in">
+            Karma runs the tests on all browsers
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Unit test the stream service</h2>
+          <p class="fragment fade-in">
+            Test the inns and outs of the service
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Step 5: Integration Test it</h2>
+          <p class="fragment fade-in">
+            What is Protractor?
+          </p>
+          <p class="fragment fade-in">
+            How does it work?
+          </p>
+          <p class="fragment fade-in">
+            What can you test with it?
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Test the home page</h2>
+        </section>
+
+        <section>
+          <h2 class="em">Test the profile page</h2>
+        </section>
+
+        <section>
+          <h2 class="em">Step 6: Automate the testing</h2>
+        </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+        width: 1280,
+        height: 700,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+
+	</body>
+</html>
