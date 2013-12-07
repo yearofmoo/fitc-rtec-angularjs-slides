@@ -69,9 +69,19 @@
     src: url('../fonts/opensans-semibold.eot?#iefix') format('embedded-opentype'),
 }
 
+html {
+  background: -moz-linear-gradient(top, rgba(0,108,138,1) 0%, rgba(10,10,10,1) 27%, rgba(0,0,0,1) 67%, rgba(34,34,34,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,108,138,1)), color-stop(27%,rgba(10,10,10,1)), color-stop(67%,rgba(0,0,0,1)), color-stop(100%,rgba(34,34,34,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0,108,138,1) 0%,rgba(10,10,10,1) 27%,rgba(0,0,0,1) 67%,rgba(34,34,34,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(0,108,138,1) 0%,rgba(10,10,10,1) 27%,rgba(0,0,0,1) 67%,rgba(34,34,34,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(0,108,138,1) 0%,rgba(10,10,10,1) 27%,rgba(0,0,0,1) 67%,rgba(34,34,34,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(0,108,138,1) 0%,rgba(10,10,10,1) 27%,rgba(0,0,0,1) 67%,rgba(34,34,34,1) 100%); /* W3C */
+}
 #body {
-  background:#232625;
+  background-color:transparent;
+  background-image:url(/images/bg.png);
   box-shadow:inset #222 0 0 10px;
+  position:relative;
 }
 
 h1,h2,h3 {
@@ -85,7 +95,7 @@ h1,h2,h3 {
 }
 
 .em3 {
-  color:#B3D929!important
+  color:#9955CC!important
 }
 
 .em4 {
@@ -97,7 +107,7 @@ h1,h2,h3 {
 }
 
 .em5 {
-  color:maroon!important;
+  color:#A44!important;
 }
 
 
